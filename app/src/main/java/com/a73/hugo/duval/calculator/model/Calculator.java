@@ -77,12 +77,8 @@ public final class Calculator {
      */
     private void clickOperationHandler(String operation) {
         this.finishedCalc = false;
-        if (this.calculation.hasSecondValue() && operation.equals("=")) {
-            this.processCalculation();
-            return;
-        }
 
-        if (operation.equals("=")) return;
+        if (this.calculation.hasSecondValue()) return;
 
         this.calculation.setOperation(operation);
         this.operationValue = calculation.getOperationLabel();
@@ -106,6 +102,13 @@ public final class Calculator {
             this.firstValue = this.calculation.getFirstValue();
         }
         this.processDisplay();
+    }
+
+    /**
+     *
+     */
+    private void clickEqualHandler() {
+        if (this.calculation.hasSecondValue()) this.processCalculation();
     }
 
     /**

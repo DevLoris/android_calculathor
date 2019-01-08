@@ -24,8 +24,11 @@ public class CalculatorType {
         add(OperationType.SUBTRACT);
         add(OperationType.MULTIPLY);
         add(OperationType.DIVIDE);
-        add("=");
     }};
+
+    public static final String COMMA = ",";
+
+    public static final String EQUAL = "=";
 
     public static final String REMOVE = "DEL";
 
