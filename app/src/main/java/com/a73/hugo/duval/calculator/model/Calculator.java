@@ -38,6 +38,10 @@ public final class Calculator {
             this.clickOperationHandler(tag);
         }
 
+        if (CalculatorType.EQUAL.equals(tag)) {
+            this.clickEqualHandler();
+        }
+
         if (this.shouldDisplay) this.processDisplay();
         this.shouldDisplay = true;
     }
@@ -73,15 +77,18 @@ public final class Calculator {
      */
     private void clickOperationHandler(String operation) {
         this.finishedCalc = false;
-        if (this.calculation.hasSecondValue() && operation.equals("=")) {
-            this.processCalculation();
-            return;
-        }
 
-        if (operation.equals("=")) return;
+        if (this.calculation.hasSecondValue()) return;
 
         this.calculation.setOperation(operation);
         this.operationValue = calculation.getOperationLabel();
+    }
+
+    /**
+     *
+     */
+    private void clickEqualHandler() {
+        if (this.calculation.hasSecondValue()) this.processCalculation();
     }
 
     /**
