@@ -1,16 +1,14 @@
 package com.a73.hugo.duval.calculator;
 
+import android.app.Activity;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatDelegate;
+import android.preference.PreferenceManager;
 import android.view.View;
 
 import com.a73.hugo.duval.calculator.calc.Calculator;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     private Calculator calculator;
 
@@ -20,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         this.preferences =  PreferenceManager.getDefaultSharedPreferences(this);
         this.isNightModeEnabled = preferences.getBoolean(night_key, false);
 
