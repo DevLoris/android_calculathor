@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:theme="@style/SummerMode"
     tools:context="com.a73.hugo.duval.calculator.MainActivity">
 
     <TextView
         android:id="@+id/result"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        style="@style/Result"
         android:text="Résultat"
-        android:background="@color/colorAccent"
         app:layout_constraintHeight_percent="0.25" />
 
     <android.support.constraint.ConstraintLayout
@@ -126,10 +125,10 @@
             app:layout_constraintLeft_toRightOf="@id/button_virgul"
             app:layout_constraintTop_toBottomOf="@id/button_2"
             app:layout_constraintHeight_percent="0.25"
-            app:layout_constraintWidth_percent="0.25" />
+            app:layout_constraintWidth_percent="0.50" />
 
         <Button
-            style="@style/Button_Actions"
+            style="@style/Button"
             android:id="@+id/button_virgul"
             android:text="@string/num_virgul"
             android:tag="@string/num_virgul"
@@ -145,8 +144,8 @@
             android:tag="@string/num_equals"
             android:text="@string/num_equals"
             android:onClick="clickHandler"
-            app:layout_constraintHeight_percent="0.25"
-            app:layout_constraintTop_toBottomOf="@id/button_3"
+            app:layout_constraintHeight_percent="0.20"
+            app:layout_constraintTop_toBottomOf="@id/button_divide"
             app:layout_constraintLeft_toRightOf="@id/button_0"
             app:layout_constraintWidth_percent="0.25" />
 
@@ -159,7 +158,7 @@
             android:tag="@string/num_pulse"
             android:onClick="clickHandler"
             app:layout_constraintLeft_toRightOf="@id/button_9"
-            app:layout_constraintHeight_percent="0.25"
+            app:layout_constraintHeight_percent="0.20"
             app:layout_constraintWidth_percent="0.25" />
         <Button
             style="@style/Button_Actions"
@@ -169,7 +168,7 @@
             android:onClick="clickHandler"
             app:layout_constraintLeft_toRightOf="@id/button_6"
             app:layout_constraintTop_toBottomOf="@id/button_add"
-            app:layout_constraintHeight_percent="0.25"
+            app:layout_constraintHeight_percent="0.20"
             app:layout_constraintWidth_percent="0.25" />
 
         <Button
@@ -180,7 +179,7 @@
             android:onClick="clickHandler"
             app:layout_constraintLeft_toRightOf="@id/button_3"
             app:layout_constraintTop_toBottomOf="@id/button_minus"
-            app:layout_constraintHeight_percent="0.25"
+            app:layout_constraintHeight_percent="0.20"
             app:layout_constraintWidth_percent="0.25" />
         <Button
             style="@style/Button_Actions"
@@ -188,9 +187,9 @@
             android:text="@string/num_divide"
             android:tag="@string/num_divide"
             android:onClick="clickHandler"
-            app:layout_constraintLeft_toRightOf="@id/button_equals"
+            app:layout_constraintLeft_toRightOf="@id/button_3"
             app:layout_constraintTop_toBottomOf="@id/button_multiply"
-            app:layout_constraintHeight_percent="0.25"
+            app:layout_constraintHeight_percent="0.20"
             app:layout_constraintWidth_percent="0.25" />
 
     </android.support.constraint.ConstraintLayout>
