@@ -20,6 +20,16 @@ public class MainActivity extends CommonActivity  {
         this.calculator = new Calculator(textView);
     }
 
+    @Override
+    public void clickNightHandler(View v) {
+        super.clickNightHandler(v);
+    }
+
+    @Override
+    public void clickMenuHandler(View v) {
+        super.clickMenuHandler(v);
+    }
+
     /**
      *
      * @param v View

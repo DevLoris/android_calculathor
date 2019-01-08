@@ -10,7 +10,7 @@
     <TextView
         android:id="@+id/result"
         style="@style/Result"
-        android:text="Résultat"
+        tools:text="Résultat"
         app:layout_constraintHeight_percent="0.25" />
 
     <android.support.constraint.ConstraintLayout
@@ -24,7 +24,7 @@
             style="@style/Button"
             android:id="@+id/button_7"
             android:text="@string/num_7"
-            android:tag="@string/num_7"
+            android:tag="7"
             android:onClick="clickHandler"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHeight_percent="0.25"
@@ -33,7 +33,7 @@
             style="@style/Button"
             android:id="@+id/button_8"
             android:text="@string/num_8"
-            android:tag="@string/num_8"
+            android:tag="8"
             android:onClick="clickHandler"
             app:layout_constraintLeft_toRightOf="@id/button_7"
             app:layout_constraintHeight_percent="0.25"
@@ -42,7 +42,7 @@
         <Button
             android:id="@+id/button_9"
             style="@style/Button"
-            android:tag="@string/num_9"
+            android:tag="9"
             android:text="@string/num_9"
             android:onClick="clickHandler"
             app:layout_constraintHeight_percent="0.25"
@@ -54,7 +54,7 @@
             style="@style/Button"
             android:id="@+id/button_4"
             android:text="@string/num_4"
-            android:tag="@string/num_4"
+            android:tag="4"
             android:onClick="clickHandler"
             app:layout_constraintTop_toBottomOf="@id/button_7"
             app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +64,7 @@
             style="@style/Button"
             android:id="@+id/button_5"
             android:text="@string/num_5"
-            android:tag="@string/num_5"
+            android:tag="5"
             android:onClick="clickHandler"
             app:layout_constraintTop_toBottomOf="@id/button_8"
             app:layout_constraintLeft_toRightOf="@id/button_4"
@@ -74,7 +74,7 @@
         <Button
             android:id="@+id/button_6"
             style="@style/Button"
-            android:tag="@string/num_6"
+            android:tag="6"
             android:text="@string/num_6"
             android:onClick="clickHandler"
             app:layout_constraintHeight_percent="0.25"
@@ -87,7 +87,7 @@
             style="@style/Button"
             android:id="@+id/button_1"
             android:text="@string/num_1"
-            android:tag="@string/num_1"
+            android:tag="1"
             android:onClick="clickHandler"
             app:layout_constraintTop_toBottomOf="@id/button_4"
             app:layout_constraintStart_toStartOf="parent"
@@ -97,7 +97,7 @@
             style="@style/Button"
             android:id="@+id/button_2"
             android:text="@string/num_2"
-            android:tag="@string/num_2"
+            android:tag="2"
             android:onClick="clickHandler"
             app:layout_constraintTop_toBottomOf="@id/button_5"
             app:layout_constraintLeft_toRightOf="@id/button_1"
@@ -107,7 +107,7 @@
         <Button
             android:id="@+id/button_3"
             style="@style/Button"
-            android:tag="@string/num_3"
+            android:tag="3"
             android:text="@string/num_3"
             android:onClick="clickHandler"
             app:layout_constraintHeight_percent="0.25"
@@ -120,18 +120,28 @@
             style="@style/Button"
             android:id="@+id/button_0"
             android:text="@string/num_0"
-            android:tag="@string/num_0"
+            android:tag="0"
             android:onClick="clickHandler"
             app:layout_constraintLeft_toRightOf="@id/button_virgul"
             app:layout_constraintTop_toBottomOf="@id/button_2"
             app:layout_constraintHeight_percent="0.25"
-            app:layout_constraintWidth_percent="0.50" />
+            app:layout_constraintWidth_percent="0.25" />
+        <Button
+            style="@style/Button"
+            android:id="@+id/button_del"
+            android:text="DEL"
+            android:tag="DEL"
+            android:onClick="clickHandler"
+            app:layout_constraintLeft_toRightOf="@id/button_0"
+            app:layout_constraintTop_toBottomOf="@id/button_2"
+            app:layout_constraintHeight_percent="0.25"
+            app:layout_constraintWidth_percent="0.25" />
 
         <Button
             style="@style/Button"
             android:id="@+id/button_virgul"
             android:text="@string/num_virgul"
-            android:tag="@string/num_virgul"
+            android:tag=","
             android:onClick="clickHandler"
             app:layout_constraintTop_toBottomOf="@id/button_1"
             app:layout_constraintHeight_percent="0.25"
@@ -141,12 +151,12 @@
         <Button
             android:id="@+id/button_equals"
             style="@style/Button_Equals"
-            android:tag="@string/num_equals"
+            android:tag="="
             android:text="@string/num_equals"
             android:onClick="clickHandler"
             app:layout_constraintHeight_percent="0.20"
             app:layout_constraintTop_toBottomOf="@id/button_divide"
-            app:layout_constraintLeft_toRightOf="@id/button_0"
+            app:layout_constraintLeft_toRightOf="@id/button_del"
             app:layout_constraintWidth_percent="0.25" />
 
 

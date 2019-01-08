@@ -26,4 +26,8 @@ public class CalculatorType {
         add(OperationType.DIVIDE);
         add("=");
     }};
+
+    public static final String REMOVE = "DEL";
+
+    public static final String CLEAR = "C";
 }

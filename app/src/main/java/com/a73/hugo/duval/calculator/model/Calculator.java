@@ -38,6 +38,10 @@ public final class Calculator {
             this.clickOperationHandler(tag);
         }
 
+        if (CalculatorType.REMOVE.equalsIgnoreCase(tag)) {
+            this.clickRemoveHandler(tag);
+        }
+
         if (this.shouldDisplay) this.processDisplay();
         this.shouldDisplay = true;
     }
@@ -86,6 +90,26 @@ public final class Calculator {
 
     /**
      *
+     * @param operation String
+     */
+    private void clickRemoveHandler(String operation) {
+        if(this.calculation.hasSecondValue()) {
+            this.calculation.setSecondValue(this.removeLastNumberOfDouble(this.calculation.getSecondValue()));
+            this.secondValue = this.calculation.getSecondValue();
+        }
+        else  if(this.calculation.hasOperation()) {
+            this.calculation.setOperation(null);
+            this.operationValue = calculation.getOperationLabel();
+        }
+        else if(this.calculation.hasFirstValue()) {
+            this.calculation.setFirstValue(this.removeLastNumberOfDouble(this.calculation.getFirstValue()));
+            this.firstValue = this.calculation.getFirstValue();
+        }
+        this.processDisplay();
+    }
+
+    /**
+     *
      */
     private void processDisplay() {
         if (this.result != null) {
@@ -93,7 +117,8 @@ public final class Calculator {
             return;
         }
 
-        String displayValue = this.formatDouble(this.firstValue)
+        String displayValue =
+                 (this.firstValue != null ? " " + this.formatDouble(this.firstValue) : "")
                 + (this.operationValue != null ? " " + this.operationValue : "")
                 + (this.secondValue != null ? " " + this.formatDouble(this.secondValue) : "");
 
@@ -123,6 +148,16 @@ public final class Calculator {
         this.result         = null;
         this.secondValue    = null;
         this.calculation.setFirstValue(this.firstValue);
+    }
+
+    private Double removeLastNumberOfDouble(Double number) {
+        String second = formatDouble(number);
+        if(second.length() > 1) {
+            second = second.substring(0, second.length() - 1);
+            return (Double.parseDouble(second));
+        }
+        else
+            return null;
     }
 
     /**

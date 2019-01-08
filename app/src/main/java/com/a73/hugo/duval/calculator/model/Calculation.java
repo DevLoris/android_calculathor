@@ -12,7 +12,7 @@ final class Calculation {
      *
      * @param firstValue double
      */
-    void setFirstValue(double firstValue) {
+    void setFirstValue(Double firstValue) {
         this.firstValue = firstValue;
     }
 
@@ -20,7 +20,7 @@ final class Calculation {
      *
      * @param secondValue double
      */
-    void setSecondValue(double secondValue) {
+    void setSecondValue(Double secondValue) {
         this.secondValue = secondValue;
     }
 
@@ -34,10 +34,32 @@ final class Calculation {
 
     /**
      *
+     * @return boolean
+     */
+    boolean hasFirstValue() {
+        return this.firstValue != null;
+    }
+
+
+
+    /**
+     *
      * @param operationType String
      */
     void setOperation(String operationType) {
+        if(operationType == null) {
+            this.operation = null;
+            return;
+        }
         this.operation = Operation.createOperation(operationType);
+    }
+
+    public Double getSecondValue() {
+        return secondValue;
+    }
+
+    public Double getFirstValue() {
+        return firstValue;
     }
 
     /**
@@ -53,7 +75,7 @@ final class Calculation {
      * @return String
      */
     String getOperationLabel() {
-        return this.operation.getLabel();
+        return (this.operation == null) ?  null : this.operation.getLabel();
     }
 
     /**
