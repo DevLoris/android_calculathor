@@ -10,23 +10,41 @@ import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
 import java.util.Locale;
 
 class CommonActivity extends Activity {
     private boolean isNightModeEnabled = false;
+    private String lang = "fr";
     private final String night_key = "NIGHT_KEY";
+    private final String lang_key = "LANG_KEY";
     private SharedPreferences preferences;
 
-    public void setLocale(String lang) {
+    /**
+     * Set locale of application
+     * @param lang
+     * @param recreate
+     */
+    public void setLocale(String lang, Boolean recreate) {
         Locale myLocale = new Locale(lang);
         Resources res = getResources();
         DisplayMetrics dm = res.getDisplayMetrics();
         Configuration conf = res.getConfiguration();
         conf.locale = myLocale;
         res.updateConfiguration(conf, dm);
-        this.recreate();
+
+        if(recreate)
+            this.recreate();
+    }
+
+    public void saveAndSetLocale(String lang){
+        SharedPreferences.Editor editor  = preferences.edit();
+        editor.putString(lang_key, lang);
+        editor.apply();
+        this.lang = lang;
+        this.setLocale(lang, true);
     }
 
     /**
@@ -37,7 +55,9 @@ class CommonActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         this.preferences =  PreferenceManager.getDefaultSharedPreferences(this);
         this.isNightModeEnabled = preferences.getBoolean(night_key, false);
+        this.lang = preferences.getString(lang_key, "fr");
 
+        setLocale(this.lang, false);
         setTheme((this.isNightModeEnabled) ? R.style.WinterMode : R.style.SummerMode);
 
         super.onCreate(savedInstanceState);
@@ -52,8 +72,29 @@ class CommonActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater findMenuItems = getMenuInflater();
         findMenuItems.inflate(R.menu.scientific, menu);
-        this.setLocale("en");
         return super.onCreateOptionsMenu(menu);
+    }
+
+    /**
+     * Test for menu options
+     * @param item
+     * @return
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.action_scientific:
+                this.closeOptionsMenu();
+                this.saveAndSetLocale("en");
+                return true;
+            case R.id.action_simple:
+                this.closeOptionsMenu();
+                this.saveAndSetLocale("fr");
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     /**
