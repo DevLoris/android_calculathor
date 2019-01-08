@@ -10,6 +10,7 @@
         <item name="textColor">#ffffff</item>
         <item name="iconDayTime">@drawable/ic_sun</item>
         <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
+        <item name="android:itemBackground">#FFFFFF</item>
 
     </style>
 
@@ -23,6 +24,7 @@
         <item name="textColor">#F2F2F3</item>
         <item name="iconDayTime">@drawable/ic_moon_phase_outline</item>
         <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
+        <item name="android:itemBackground">#FFFFFF</item>
 
     </style>
 

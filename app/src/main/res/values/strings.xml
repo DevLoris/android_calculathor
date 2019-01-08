@@ -20,11 +20,6 @@
     <string name="operation_subtract">OPERATION_SUBTRACT</string>
     <string name="operation_multiply">OPERATION_MULTIPLY</string>
     <string name="operation_divide">OPERATION_DIVIDE</string>
-    <string name="title_activity_scientific">ScientificActivity</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="simple_name">Simple</string>
+    <string name="scientific_name">Scientifique</string>
 </resources>

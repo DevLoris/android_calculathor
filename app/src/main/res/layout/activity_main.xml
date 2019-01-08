@@ -207,6 +207,19 @@
         android:src="?attr/iconDayTime"
         app:layout_constraintLeft_toLeftOf="@id/result"
         app:layout_constraintTop_toTopOf="@id/result" />
+    <ImageButton
+        android:id="@+id/menuButton"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_margin="10dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="Night"
+        android:onClick="clickMenuHandler"
+        android:padding="10dp"
+        android:src="@drawable/ic_menu_black_24dp"
+        app:layout_constraintRight_toRightOf="@id/result"
+        app:layout_constraintTop_toTopOf="@id/result" />
 
 
 
