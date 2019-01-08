@@ -1,4 +1,4 @@
-package com.a73.hugo.duval.calculator.calc;
+package com.a73.hugo.duval.calculator.model;
 
 import android.widget.TextView;
 

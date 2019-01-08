@@ -1,6 +1,6 @@
-package com.a73.hugo.duval.calculator.calc;
+package com.a73.hugo.duval.calculator.model;
 
-import com.a73.hugo.duval.calculator.calc.operations.Operation;
+import com.a73.hugo.duval.calculator.model.operations.Operation;
 
 final class Calculation {
 

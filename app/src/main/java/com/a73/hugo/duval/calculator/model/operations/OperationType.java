@@ -1,4 +1,4 @@
-package com.a73.hugo.duval.calculator.calc.operations;
+package com.a73.hugo.duval.calculator.model.operations;
 
 public final class OperationType {
     public static final String ADD      = "OPERATION_ADD";

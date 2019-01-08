@@ -1,6 +1,6 @@
-package com.a73.hugo.duval.calculator.calc;
+package com.a73.hugo.duval.calculator.model;
 
-import com.a73.hugo.duval.calculator.calc.operations.OperationType;
+import com.a73.hugo.duval.calculator.model.operations.OperationType;
 
 import java.util.ArrayList;
 import java.util.List;
