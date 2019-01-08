@@ -78,6 +78,8 @@ public final class Calculator {
             return;
         }
 
+        if (operation.equals("=")) return;
+
         this.calculation.setOperation(operation);
         this.operationValue = calculation.getOperationLabel();
     }

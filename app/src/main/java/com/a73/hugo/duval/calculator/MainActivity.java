@@ -1,10 +1,6 @@
 package com.a73.hugo.duval.calculator;
 
-import android.app.Activity;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.TextView;
 
