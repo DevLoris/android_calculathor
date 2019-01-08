@@ -20,4 +20,6 @@
     <string name="operation_subtract">OPERATION_SUBTRACT</string>
     <string name="operation_multiply">OPERATION_MULTIPLY</string>
     <string name="operation_divide">OPERATION_DIVIDE</string>
+    <string name="simple_name">Simple</string>
+    <string name="scientific_name">Scientifique</string>
 </resources>

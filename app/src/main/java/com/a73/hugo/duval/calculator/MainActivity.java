@@ -1,13 +1,16 @@
 package com.a73.hugo.duval.calculator;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.TextView;
 
 import com.a73.hugo.duval.calculator.calc.Calculator;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends CommonActivity  {
 
     TextView textView;
     private Calculator calculator;
