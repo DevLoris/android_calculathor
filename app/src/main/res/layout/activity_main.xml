@@ -7,12 +7,192 @@
     tools:context="com.a73.hugo.duval.calculator.MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/result"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="Résultat"
+        android:background="@color/colorAccent"
+        app:layout_constraintHeight_percent="0.25" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/touches"
+        app:layout_constraintTop_toBottomOf="@id/result"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.75">
+
+        <Button
+            style="@style/Button"
+            android:id="@+id/button_7"
+            android:text="@string/num_7"
+            android:tag="@string/num_7"
+            android:onClick="clickHandler"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHeight_percent="0.25"
+            app:layout_constraintWidth_percent="0.25" />
+        <Button
+            style="@style/Button"
+            android:id="@+id/button_8"
+            android:text="@string/num_8"
+            android:tag="@string/num_8"
+            android:onClick="clickHandler"
+            app:layout_constraintLeft_toRightOf="@id/button_7"
+            app:layout_constraintHeight_percent="0.25"
+            app:layout_constraintWidth_percent="0.25" />
+
+        <Button
+            android:id="@+id/button_9"
+            style="@style/Button"
+            android:tag="@string/num_9"
+            android:text="@string/num_9"
+            android:onClick="clickHandler"
+            app:layout_constraintHeight_percent="0.25"
+            app:layout_constraintLeft_toRightOf="@id/button_8"
+            app:layout_constraintWidth_percent="0.25" />
+
+
+        <Button
+            style="@style/Button"
+            android:id="@+id/button_4"
+            android:text="@string/num_4"
+            android:tag="@string/num_4"
+            android:onClick="clickHandler"
+            app:layout_constraintTop_toBottomOf="@id/button_7"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHeight_percent="0.25"
+            app:layout_constraintWidth_percent="0.25" />
+        <Button
+            style="@style/Button"
+            android:id="@+id/button_5"
+            android:text="@string/num_5"
+            android:tag="@string/num_5"
+            android:onClick="clickHandler"
+            app:layout_constraintTop_toBottomOf="@id/button_8"
+            app:layout_constraintLeft_toRightOf="@id/button_4"
+            app:layout_constraintHeight_percent="0.25"
+            app:layout_constraintWidth_percent="0.25" />
+
+        <Button
+            android:id="@+id/button_6"
+            style="@style/Button"
+            android:tag="@string/num_6"
+            android:text="@string/num_6"
+            android:onClick="clickHandler"
+            app:layout_constraintHeight_percent="0.25"
+            app:layout_constraintTop_toBottomOf="@id/button_9"
+            app:layout_constraintLeft_toRightOf="@id/button_5"
+            app:layout_constraintWidth_percent="0.25" />
+
+
+        <Button
+            style="@style/Button"
+            android:id="@+id/button_1"
+            android:text="@string/num_1"
+            android:tag="@string/num_1"
+            android:onClick="clickHandler"
+            app:layout_constraintTop_toBottomOf="@id/button_4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHeight_percent="0.25"
+            app:layout_constraintWidth_percent="0.25" />
+        <Button
+            style="@style/Button"
+            android:id="@+id/button_2"
+            android:text="@string/num_2"
+            android:tag="@string/num_2"
+            android:onClick="clickHandler"
+            app:layout_constraintTop_toBottomOf="@id/button_5"
+            app:layout_constraintLeft_toRightOf="@id/button_1"
+            app:layout_constraintHeight_percent="0.25"
+            app:layout_constraintWidth_percent="0.25" />
+
+        <Button
+            android:id="@+id/button_3"
+            style="@style/Button"
+            android:tag="@string/num_3"
+            android:text="@string/num_3"
+            android:onClick="clickHandler"
+            app:layout_constraintHeight_percent="0.25"
+            app:layout_constraintTop_toBottomOf="@id/button_6"
+            app:layout_constraintLeft_toRightOf="@id/button_2"
+            app:layout_constraintWidth_percent="0.25" />
+
+
+        <Button
+            style="@style/Button"
+            android:id="@+id/button_0"
+            android:text="@string/num_0"
+            android:tag="@string/num_0"
+            android:onClick="clickHandler"
+            app:layout_constraintLeft_toRightOf="@id/button_virgul"
+            app:layout_constraintTop_toBottomOf="@id/button_2"
+            app:layout_constraintHeight_percent="0.25"
+            app:layout_constraintWidth_percent="0.25" />
+
+        <Button
+            style="@style/Button_Actions"
+            android:id="@+id/button_virgul"
+            android:text="@string/num_virgul"
+            android:tag="@string/num_virgul"
+            android:onClick="clickHandler"
+            app:layout_constraintTop_toBottomOf="@id/button_1"
+            app:layout_constraintHeight_percent="0.25"
+            app:layout_constraintWidth_percent="0.25" />
+
+
+        <Button
+            android:id="@+id/button_equals"
+            style="@style/Button_Equals"
+            android:tag="@string/num_equals"
+            android:text="@string/num_equals"
+            android:onClick="clickHandler"
+            app:layout_constraintHeight_percent="0.25"
+            app:layout_constraintTop_toBottomOf="@id/button_3"
+            app:layout_constraintLeft_toRightOf="@id/button_0"
+            app:layout_constraintWidth_percent="0.25" />
+
+
+
+        <Button
+            style="@style/Button_Actions"
+            android:id="@+id/button_add"
+            android:text="@string/num_pulse"
+            android:tag="@string/num_pulse"
+            android:onClick="clickHandler"
+            app:layout_constraintLeft_toRightOf="@id/button_9"
+            app:layout_constraintHeight_percent="0.25"
+            app:layout_constraintWidth_percent="0.25" />
+        <Button
+            style="@style/Button_Actions"
+            android:id="@+id/button_minus"
+            android:text="@string/num_minus"
+            android:tag="@string/num_minus"
+            android:onClick="clickHandler"
+            app:layout_constraintLeft_toRightOf="@id/button_6"
+            app:layout_constraintTop_toBottomOf="@id/button_add"
+            app:layout_constraintHeight_percent="0.25"
+            app:layout_constraintWidth_percent="0.25" />
+
+        <Button
+            style="@style/Button_Actions"
+            android:id="@+id/button_multiply"
+            android:text="@string/num_multiply"
+            android:tag="@string/num_multiply"
+            android:onClick="clickHandler"
+            app:layout_constraintLeft_toRightOf="@id/button_3"
+            app:layout_constraintTop_toBottomOf="@id/button_minus"
+            app:layout_constraintHeight_percent="0.25"
+            app:layout_constraintWidth_percent="0.25" />
+        <Button
+            style="@style/Button_Actions"
+            android:id="@+id/button_divide"
+            android:text="@string/num_divide"
+            android:tag="@string/num_divide"
+            android:onClick="clickHandler"
+            app:layout_constraintLeft_toRightOf="@id/button_equals"
+            app:layout_constraintTop_toBottomOf="@id/button_multiply"
+            app:layout_constraintHeight_percent="0.25"
+            app:layout_constraintWidth_percent="0.25" />
+
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>
