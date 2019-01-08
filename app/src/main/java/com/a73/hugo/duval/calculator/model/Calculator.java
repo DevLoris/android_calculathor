@@ -42,6 +42,10 @@ public final class Calculator {
             this.clickRemoveHandler(tag);
         }
 
+        if (CalculatorType.CLEAR.equalsIgnoreCase(tag)) {
+            this.clickClearHandler(tag);
+        }
+
         if (this.shouldDisplay) this.processDisplay();
         this.shouldDisplay = true;
     }
@@ -100,6 +104,26 @@ public final class Calculator {
         else if(this.calculation.hasFirstValue()) {
             this.calculation.setFirstValue(this.removeLastNumberOfDouble(this.calculation.getFirstValue()));
             this.firstValue = this.calculation.getFirstValue();
+        }
+        this.processDisplay();
+    }
+
+    /**
+     *
+     * @param operation String
+     */
+    private void clickClearHandler(String operation) {
+        if(this.calculation.hasSecondValue()) {
+            this.calculation.setSecondValue(null);
+            this.secondValue = null;
+        }
+        else  if(this.calculation.hasOperation()) {
+            this.calculation.setOperation(null);
+            this.operationValue = null;
+        }
+        else if(this.calculation.hasFirstValue()) {
+            this.calculation.setFirstValue(null);
+            this.firstValue = null;
         }
         this.processDisplay();
     }
