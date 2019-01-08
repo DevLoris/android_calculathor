@@ -1,10 +1,7 @@
 package com.a73.hugo.duval.calculator.calc.operations;
 
 public abstract class Operation {
-    public static final String ADD      = "OPERATION_ADD";
-    public static final String SUBTRACT = "OPERATION_SUBTRACT";
-    public static final String MULTIPLY = "OPERATION_MULTIPLY";
-    public static final String DIVIDE   = "OPERATION_DIVIDE";
+    String label;
 
     /**
      *
@@ -13,17 +10,25 @@ public abstract class Operation {
      */
     public static Operation createOperation(String operationType) {
         switch (operationType) {
-            case ADD:
+            case OperationType.ADD:
                 return new AddOperation();
-            case SUBTRACT:
+            case OperationType.SUBTRACT:
                 return new SubtractOperation();
-            case MULTIPLY:
+            case OperationType.MULTIPLY:
                 return new MultiplyOperation();
-            case DIVIDE:
+            case OperationType.DIVIDE:
                 return new DivideOperation();
             default:
                 throw new Error("Wrong Operation Type");
         }
+    }
+
+    /**
+     *
+     * @return String
+     */
+    public String getLabel() {
+        return this.label;
     }
 
     /**

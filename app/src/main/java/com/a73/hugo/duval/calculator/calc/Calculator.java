@@ -1,51 +1,134 @@
 package com.a73.hugo.duval.calculator.calc;
 
-import android.view.View;
-
-import com.a73.hugo.duval.calculator.calc.operations.Operation;
-
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.TextView;
 
 public final class Calculator {
 
-    public static final List<String> NUMBERS = new ArrayList<String>(){{
-        add("0");
-        add("1");
-        add("2");
-        add("3");
-        add("4");
-        add("5");
-        add("6");
-        add("7");
-        add("8");
-        add("9");
-    }};
-
-    public static final List<String> OPERATIONS = new ArrayList<String>(){{
-        add(Operation.ADD);
-        add(Operation.SUBTRACT);
-        add(Operation.MULTIPLY);
-        add(Operation.DIVIDE);
-    }};
-
-    private Double currentValue;
+    private Double firstValue;
+    private Double secondValue;
     private Double result;
-    private String displayValue;
+
+    private String operationValue = "";
+
+    private Boolean shouldDisplay = true;
+    private Boolean finishedCalc  = false;
+
+    private TextView textView;
+
+    private Calculation calculation;
 
     /**
      *
-     * @param v View
      */
-    public void clickNumberHandler(View v) {
-
+    public Calculator(TextView textView) {
+        this.textView    = textView;
+        this.calculation = new Calculation();
     }
 
     /**
      *
-     * @param v View
+     * @param tag String
      */
-    public void clickOperationHandler(View v) {
+    public void clickHandler(String tag) {
+        if (CalculatorType.NUMBERS.contains(tag)) {
+            this.clickNumberHandler(tag);
+        }
 
+        if (CalculatorType.OPERATIONS.contains(tag)) {
+            this.clickOperationHandler(tag);
+        }
+
+        if (this.shouldDisplay) this.processDisplay();
+        this.shouldDisplay = true;
+    }
+
+    /**
+     *
+     * @param number String
+     */
+    private void clickNumberHandler(String number) {
+        if (!this.calculation.hasOperation()) {
+
+            if (this.finishedCalc) this.firstValue = null;
+            this.finishedCalc = false;
+
+            String fVal = "";
+            if (this.firstValue != null) fVal = this.formatDouble(this.firstValue);
+
+            this.firstValue = Double.valueOf(fVal + number);
+            this.calculation.setFirstValue(this.firstValue);
+            return;
+        }
+
+        String sVal = "";
+        if (this.secondValue != null) sVal = this.formatDouble(this.secondValue);
+
+        this.secondValue = Double.valueOf(sVal + number);
+        this.calculation.setSecondValue(this.secondValue);
+    }
+
+    /**
+     *
+     * @param operation String
+     */
+    private void clickOperationHandler(String operation) {
+        this.finishedCalc = false;
+        if (this.calculation.hasSecondValue() && operation.equals("=")) {
+            this.processCalculation();
+            return;
+        }
+
+        this.calculation.setOperation(operation);
+        this.operationValue = calculation.getOperationLabel();
+    }
+
+    /**
+     *
+     */
+    private void processDisplay() {
+        if (this.result != null) {
+            this.textView.setText(this.formatDouble(this.result));
+            return;
+        }
+
+        String displayValue = this.formatDouble(this.firstValue)
+                + (this.operationValue != null ? " " + this.operationValue : "")
+                + (this.secondValue != null ? " " + this.formatDouble(this.secondValue) : "");
+
+        this.textView.setText(displayValue);
+    }
+
+    /**
+     *
+     */
+    private void processCalculation() {
+        this.result = this.calculation.processCalculation();
+        calculation.reset();
+
+        this.processDisplay();
+        this.reset();
+
+        this.shouldDisplay = false;
+        this.finishedCalc  = true;
+    }
+
+    /**
+     *
+     */
+    private void reset() {
+        this.firstValue     = this.result;
+        this.operationValue = null;
+        this.result         = null;
+        this.secondValue    = null;
+        this.calculation.setFirstValue(this.firstValue);
+    }
+
+    /**
+     *
+     * @param value Double
+     * @return String
+     */
+    private String formatDouble(Double value) {
+        return Double.toString(value).replaceAll("\\.0$", "");
     }
 }

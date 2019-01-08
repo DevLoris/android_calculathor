@@ -2,18 +2,17 @@ package com.a73.hugo.duval.calculator.calc;
 
 import com.a73.hugo.duval.calculator.calc.operations.Operation;
 
-public final class Calculation {
+final class Calculation {
 
     private Double firstValue  = 0.0;
     private Double secondValue;
     private Operation operation;
 
-
     /**
      *
      * @param firstValue double
      */
-    public void setFirstValue(double firstValue) {
+    void setFirstValue(double firstValue) {
         this.firstValue = firstValue;
     }
 
@@ -21,7 +20,7 @@ public final class Calculation {
      *
      * @param secondValue double
      */
-    public void setSecondValue(double secondValue) {
+    void setSecondValue(double secondValue) {
         this.secondValue = secondValue;
     }
 
@@ -29,7 +28,7 @@ public final class Calculation {
      *
      * @return boolean
      */
-    public boolean hasSecondValue() {
+    boolean hasSecondValue() {
         return this.secondValue != null;
     }
 
@@ -37,7 +36,7 @@ public final class Calculation {
      *
      * @param operationType String
      */
-    public void setOperation(String operationType) {
+    void setOperation(String operationType) {
         this.operation = Operation.createOperation(operationType);
     }
 
@@ -45,15 +44,32 @@ public final class Calculation {
      *
      * @return boolean
      */
-    public boolean hasOperation() {
+    boolean hasOperation() {
         return this.operation != null;
+    }
+
+    /**
+     *
+     * @return String
+     */
+    String getOperationLabel() {
+        return this.operation.getLabel();
     }
 
     /**
      *
      * @return Double
      */
-    public Double processCalculation() {
-        return 0.0;
+    Double processCalculation() {
+        return this.operation.calculate(this.firstValue, this.secondValue);
+    }
+
+    /**
+     *
+     */
+    void reset() {
+        this.firstValue  = 0.0;
+        this.operation   = null;
+        this.secondValue = null;
     }
 }
