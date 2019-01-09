@@ -1,4 +1,4 @@
-package com.a73.hugo.duval.calculator;
+package com.a73.hugo.duval.calculator.activities;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
@@ -11,6 +11,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.a73.hugo.duval.calculator.R;
 
 import java.util.Locale;
 

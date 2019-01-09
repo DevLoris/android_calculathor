@@ -124,6 +124,7 @@ public final class Calculator {
         else if(this.calculation.hasFirstValue()) {
             this.calculation.setFirstValue(null);
             this.firstValue = null;
+            
         }
         this.processDisplay();
     }

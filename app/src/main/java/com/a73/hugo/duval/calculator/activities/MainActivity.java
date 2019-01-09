@@ -1,9 +1,10 @@
-package com.a73.hugo.duval.calculator;
+package com.a73.hugo.duval.calculator.activities;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.a73.hugo.duval.calculator.R;
 import com.a73.hugo.duval.calculator.model.Calculator;
 
 public class MainActivity extends CommonActivity  {
