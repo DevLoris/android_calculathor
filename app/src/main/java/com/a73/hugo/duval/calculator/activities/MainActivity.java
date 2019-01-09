@@ -5,7 +5,11 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.a73.hugo.duval.calculator.R;
+import com.a73.hugo.duval.calculator.model.Calculation;
 import com.a73.hugo.duval.calculator.model.Calculator;
+import com.a73.hugo.duval.calculator.model.HistorySingleton;
+import com.a73.hugo.duval.calculator.model.operations.AddOperation;
+import com.a73.hugo.duval.calculator.model.operations.Operation;
 
 public class MainActivity extends CommonActivity  {
 
@@ -19,6 +23,13 @@ public class MainActivity extends CommonActivity  {
 
         this.textView   = findViewById(R.id.result);
         this.calculator = new Calculator(textView);
+
+        HistorySingleton.getInstance().addCalculation(new Calculation(2D, 3D, new Operation() {
+            @Override
+            public Double calculate(Double firstValue, Double secondValue) {
+                return firstValue + secondValue;
+            }
+        }));
     }
 
     @Override

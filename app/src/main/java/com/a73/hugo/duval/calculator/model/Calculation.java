@@ -2,12 +2,21 @@ package com.a73.hugo.duval.calculator.model;
 
 import com.a73.hugo.duval.calculator.model.operations.Operation;
 
-final class Calculation {
+public final class Calculation {
 
     private Double firstValue  = 0.0;
     private Double secondValue;
     private Operation operation;
 
+    public Calculation(Double firstValue, Double secondValue, Operation operation) {
+        this.firstValue = firstValue;
+        this.secondValue = secondValue;
+        this.operation = operation;
+    }
+
+    public Calculation() {
+
+    }
     /**
      *
      * @param firstValue double
