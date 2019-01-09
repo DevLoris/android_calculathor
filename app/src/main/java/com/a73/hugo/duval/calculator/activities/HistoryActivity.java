@@ -18,7 +18,7 @@ public class HistoryActivity extends CommonActivity {
         setContentView(R.layout.activity_history);
 
 
-        this.recyclerView = findViewById(R.id.calc);
+        this.recyclerView = findViewById(R.id.history_recycler);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
 

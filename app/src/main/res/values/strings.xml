@@ -22,4 +22,5 @@
     <string name="operation_divide">OPERATION_DIVIDE</string>
     <string name="simple_name">Simple</string>
     <string name="scientific_name">Scientifique</string>
+    <string name="history_name">Historique</string>
 </resources>

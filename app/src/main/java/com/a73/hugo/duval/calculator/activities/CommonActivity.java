@@ -1,6 +1,7 @@
 package com.a73.hugo.duval.calculator.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -85,13 +86,17 @@ class CommonActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
-            case R.id.action_scientific:
-                this.closeOptionsMenu();
-                this.saveAndSetLocale("en");
+            case R.id.action_history:
+                if(this instanceof MainActivity) {
+                    Intent intent = new Intent(this, HistoryActivity.class);
+                    startActivity(intent);
+                }
                 return true;
             case R.id.action_simple:
-                this.closeOptionsMenu();
-                this.saveAndSetLocale("fr");
+                if(this instanceof HistoryActivity) {
+                    Intent intent = new Intent(this, MainActivity.class);
+                    startActivity(intent);
+                }
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
