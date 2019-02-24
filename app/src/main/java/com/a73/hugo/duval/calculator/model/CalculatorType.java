@@ -19,11 +19,11 @@ public class CalculatorType {
         add("9");
     }};
 
-    public static final List<String> OPERATIONS = new ArrayList<String>(){{
-        add(OperationType.ADD);
-        add(OperationType.SUBTRACT);
-        add(OperationType.MULTIPLY);
-        add(OperationType.DIVIDE);
+    public static final List<OperationType> OPERATIONS = new ArrayList<OperationType>(){{
+        add(OperationType.OPERATION_ADD);
+        add(OperationType.OPERATION_SUBTRACT);
+        add(OperationType.OPERATION_MULTIPLY);
+        add(OperationType.OPERATION_DIVIDE);
     }};
 
     public static final String COMMA = ",";

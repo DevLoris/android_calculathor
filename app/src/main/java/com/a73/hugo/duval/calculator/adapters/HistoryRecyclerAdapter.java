@@ -9,14 +9,11 @@ import android.widget.TextView;
 
 import com.a73.hugo.duval.calculator.R;
 import com.a73.hugo.duval.calculator.model.Calculation;
+import com.a73.hugo.duval.calculator.model.HistorySingleton;
 
 import java.util.ArrayList;
 
 public class HistoryRecyclerAdapter  extends RecyclerView.Adapter<HistoryRecyclerAdapter.ViewHandler> {
-    private ArrayList<Calculation> planets;
-    public HistoryRecyclerAdapter(ArrayList<Calculation> planets) {
-        this.planets = planets;
-    }
 
     @NonNull
     @Override
@@ -28,12 +25,12 @@ public class HistoryRecyclerAdapter  extends RecyclerView.Adapter<HistoryRecycle
 
     @Override
     public void onBindViewHolder(@NonNull HistoryRecyclerAdapter.ViewHandler holder, int position) {
-        holder.bindItem(planets.get(position));
+        holder.bindItem(HistorySingleton.getInstance().getCalculations().get(position));
     }
 
     @Override
     public int getItemCount() {
-        return planets.size();
+        return HistorySingleton.getInstance().getCalculations().size();
     }
 
     static class ViewHandler extends RecyclerView.ViewHolder {
@@ -48,8 +45,9 @@ public class HistoryRecyclerAdapter  extends RecyclerView.Adapter<HistoryRecycle
             this.v = v;
         }
 
-        public void bindItem(final Calculation planet) {
-            calculation.setText(planet.getFirstValue().toString());
+        public void bindItem(final Calculation calcul) {
+            calculation.setText(calcul.getFirstValue() + " " + calcul.getOperationLabel() + " " + calcul.getSecondValue());
+            result.setText(calcul.processCalculation().toString());
         }
     }
 }

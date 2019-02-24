@@ -26,4 +26,8 @@ public class HistorySingleton {
     public void setCalculations(ArrayList<Calculation> calculations) {
         this.calculations = calculations;
     }
+
+    public void resetCalculations() {
+        calculations = new ArrayList<>();
+    }
 }

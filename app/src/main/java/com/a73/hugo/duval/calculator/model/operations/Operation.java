@@ -8,15 +8,15 @@ public abstract class Operation {
      * @param operationType String
      * @return Operation
      */
-    public static Operation createOperation(String operationType) {
+    public static Operation createOperation(OperationType operationType) {
         switch (operationType) {
-            case OperationType.ADD:
+            case OPERATION_ADD:
                 return new AddOperation();
-            case OperationType.SUBTRACT:
+            case OPERATION_SUBTRACT:
                 return new SubtractOperation();
-            case OperationType.MULTIPLY:
+            case OPERATION_MULTIPLY:
                 return new MultiplyOperation();
-            case OperationType.DIVIDE:
+            case OPERATION_DIVIDE:
                 return new DivideOperation();
             default:
                 throw new Error("Wrong Operation Type");

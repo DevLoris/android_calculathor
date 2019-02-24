@@ -23,13 +23,6 @@ public class MainActivity extends CommonActivity  {
 
         this.textView   = findViewById(R.id.result);
         this.calculator = new Calculator(textView);
-
-        HistorySingleton.getInstance().addCalculation(new Calculation(2D, 3D, new Operation() {
-            @Override
-            public Double calculate(Double firstValue, Double secondValue) {
-                return firstValue + secondValue;
-            }
-        }));
     }
 
     @Override

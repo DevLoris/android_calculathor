@@ -1,8 +1,30 @@
 package com.a73.hugo.duval.calculator.model.operations;
 
-public final class OperationType {
-    public static final String ADD      = "OPERATION_ADD";
-    public static final String SUBTRACT = "OPERATION_SUBTRACT";
-    public static final String MULTIPLY = "OPERATION_MULTIPLY";
-    public static final String DIVIDE   = "OPERATION_DIVIDE";
+
+public enum OperationType {
+    OPERATION_ADD("OPERATION_ADD"),
+    OPERATION_SUBTRACT("OPERATION_SUBTRACT"),
+    OPERATION_MULTIPLY("OPERATION_MULTIPLY"),
+    OPERATION_DIVIDE("OPERATION_DIVIDE");
+
+    String name;
+    OperationType(String name) {
+        this.name = name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public static boolean exist(String key) {
+        for (OperationType me : OperationType.values()) {
+            if (me.name().equalsIgnoreCase(key))
+                return true;
+        }
+        return false;
+    }
 }

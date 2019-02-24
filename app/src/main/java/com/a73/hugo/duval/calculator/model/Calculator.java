@@ -1,6 +1,11 @@
 package com.a73.hugo.duval.calculator.model;
 
+import android.util.Log;
 import android.widget.TextView;
+
+import com.a73.hugo.duval.calculator.model.operations.OperationType;
+
+import java.util.Arrays;
 
 public final class Calculator {
 
@@ -34,8 +39,8 @@ public final class Calculator {
             this.clickNumberHandler(tag);
         }
 
-        if (CalculatorType.OPERATIONS.contains(tag)) {
-            this.clickOperationHandler(tag);
+        if (OperationType.exist(tag) && CalculatorType.OPERATIONS.contains(OperationType.valueOf(tag))) {
+            this.clickOperationHandler(OperationType.valueOf(tag));
         }
 
         if (CalculatorType.REMOVE.equalsIgnoreCase(tag)) {
@@ -44,6 +49,10 @@ public final class Calculator {
 
         if (CalculatorType.CLEAR.equalsIgnoreCase(tag)) {
             this.clickClearHandler(tag);
+        }
+
+        if (CalculatorType.EQUAL.equalsIgnoreCase(tag)) {
+            this.clickEqualHandler();
         }
 
         if (this.shouldDisplay) this.processDisplay();
@@ -79,10 +88,12 @@ public final class Calculator {
      *
      * @param operation String
      */
-    private void clickOperationHandler(String operation) {
+    private void clickOperationHandler(OperationType operation) {
         this.finishedCalc = false;
 
-        if (this.calculation.hasSecondValue()) return;
+        if (this.calculation.hasSecondValue()) {
+            this.processCalculation();
+        };
 
         this.calculation.setOperation(operation);
         this.operationValue = calculation.getOperationLabel();
@@ -158,6 +169,14 @@ public final class Calculator {
      */
     private void processCalculation() {
         this.result = this.calculation.processCalculation();
+
+        try {
+        HistorySingleton.getInstance().addCalculation((Calculation) this.calculation.clone());
+        }
+        catch (Exception e) {
+            Log.e("HISTORY", "processCalculation: ", e);
+        }
+
         calculation.reset();
 
         this.processDisplay();

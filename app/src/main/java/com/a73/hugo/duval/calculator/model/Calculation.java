@@ -1,8 +1,9 @@
 package com.a73.hugo.duval.calculator.model;
 
 import com.a73.hugo.duval.calculator.model.operations.Operation;
+import com.a73.hugo.duval.calculator.model.operations.OperationType;
 
-public final class Calculation {
+public final class Calculation implements Cloneable {
 
     private Double firstValue  = 0.0;
     private Double secondValue;
@@ -50,12 +51,15 @@ public final class Calculation {
     }
 
 
+    public Operation getOperation() {
+        return operation;
+    }
 
     /**
      *
      * @param operationType String
      */
-    void setOperation(String operationType) {
+    void setOperation(OperationType operationType) {
         if(operationType == null) {
             this.operation = null;
             return;
@@ -83,7 +87,7 @@ public final class Calculation {
      *
      * @return String
      */
-    String getOperationLabel() {
+    public String getOperationLabel() {
         return (this.operation == null) ?  null : this.operation.getLabel();
     }
 
@@ -91,7 +95,7 @@ public final class Calculation {
      *
      * @return Double
      */
-    Double processCalculation() {
+    public Double processCalculation() {
         return this.operation.calculate(this.firstValue, this.secondValue);
     }
 
@@ -102,5 +106,10 @@ public final class Calculation {
         this.firstValue  = 0.0;
         this.operation   = null;
         this.secondValue = null;
+    }
+
+
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }
