@@ -186,7 +186,7 @@
             android:id="@+id/button_virgul"
             style="@style/Button"
             android:onClick="clickHandler"
-            android:tag="."
+            android:tag=","
             android:text="@string/num_virgul"
             app:layout_constraintHeight_percent="0.25"
             app:layout_constraintTop_toBottomOf="@id/button_1"

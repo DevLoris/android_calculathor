@@ -12,8 +12,7 @@ public final class Calculator {
     private Double firstValue;
     private Double secondValue;
     private Double result;
-
-    private String operationValue = "";
+    private boolean comma = false;
 
     private Boolean shouldDisplay = true;
     private Boolean finishedCalc  = false;
@@ -51,6 +50,10 @@ public final class Calculator {
             this.clickClearHandler(tag);
         }
 
+        if (CalculatorType.COMMA.equalsIgnoreCase(tag)) {
+            this.clickCommaHandler();
+        }
+
         if (CalculatorType.EQUAL.equalsIgnoreCase(tag)) {
             this.clickEqualHandler();
         }
@@ -65,23 +68,28 @@ public final class Calculator {
      */
     private void clickNumberHandler(String number) {
         if (!this.calculation.hasOperation()) {
+            Double firstValue =  (this.calculation.getFirstValue() == null) ? 0 : this.calculation.getFirstValue();
+            String first = this.formatDouble(firstValue);
+            if (comma && firstValue % 1 == 0) {
+                first += ".";
+                comma = false;
+            }
+            first += number;
 
-            if (this.finishedCalc) this.firstValue = null;
-            this.finishedCalc = false;
-
-            String fVal = "";
-            if (this.firstValue != null) fVal = this.formatDouble(this.firstValue);
-
-            this.firstValue = Double.valueOf(fVal + number);
-            this.calculation.setFirstValue(this.firstValue);
+            this.calculation.setFirstValue(Double.valueOf(first));
             return;
         }
 
-        String sVal = "";
-        if (this.secondValue != null) sVal = this.formatDouble(this.secondValue);
+        Double secondValue =  (this.calculation.getSecondValue() == null) ? 0 : this.calculation.getSecondValue();
+        String second = this.formatDouble(secondValue);
+        if (comma && secondValue % 1 == 0) {
+            second += ".";
+            comma = false;
+        }
+        second += number;
 
-        this.secondValue = Double.valueOf(sVal + number);
-        this.calculation.setSecondValue(this.secondValue);
+        this.calculation.setSecondValue(Double.valueOf(second));
+
     }
 
     /**
@@ -96,7 +104,6 @@ public final class Calculator {
         };
 
         this.calculation.setOperation(operation);
-        this.operationValue = calculation.getOperationLabel();
     }
 
     /**
@@ -110,11 +117,9 @@ public final class Calculator {
         }
         else  if(this.calculation.hasOperation()) {
             this.calculation.setOperation(null);
-            this.operationValue = calculation.getOperationLabel();
         }
         else if(this.calculation.hasFirstValue()) {
             this.calculation.setFirstValue(this.removeLastNumberOfDouble(this.calculation.getFirstValue()));
-            this.firstValue = this.calculation.getFirstValue();
         }
         this.processDisplay();
     }
@@ -130,7 +135,6 @@ public final class Calculator {
         }
         else  if(this.calculation.hasOperation()) {
             this.calculation.setOperation(null);
-            this.operationValue = null;
         }
         else if(this.calculation.hasFirstValue()) {
             this.calculation.setFirstValue(null);
@@ -138,6 +142,14 @@ public final class Calculator {
             
         }
         this.processDisplay();
+    }
+
+
+    /**
+     * inverse la comma de virgule
+     */
+    private void clickCommaHandler() {
+        this.comma = true;
     }
 
     /**
@@ -156,10 +168,29 @@ public final class Calculator {
             return;
         }
 
-        String displayValue =
-                 (this.firstValue != null ? " " + this.formatDouble(this.firstValue) : "")
-                + (this.operationValue != null ? " " + this.operationValue : "")
-                + (this.secondValue != null ? " " + this.formatDouble(this.secondValue) : "");
+        String displayValue = "";
+
+        //si la virgule est activée, et que la valeur est encore vide, on affiche en placeholder un "0."
+        if(this.calculation.getFirstValue() == null && this.comma)
+            displayValue += "0.";
+
+        if(this.calculation.getFirstValue() != null) {
+            displayValue += this.formatDouble(this.calculation.getFirstValue());
+            if(this.calculation.getOperationLabel() == null && this.comma && this.calculation.getFirstValue() % 1 == 0)
+                displayValue += ".";
+        }
+
+        if(this.calculation.getOperationLabel() != null) {
+            displayValue += (this.calculation.getOperationLabel());
+
+            if (this.calculation.getSecondValue() != null) {
+                displayValue += this.formatDouble(this.calculation.getSecondValue());
+                if (this.comma && this.calculation.getSecondValue() % 1 == 0)
+                    displayValue += ".";
+            }
+            else if(this.comma)
+                displayValue += "0.";
+        }
 
         this.textView.setText(displayValue);
     }
@@ -191,7 +222,6 @@ public final class Calculator {
      */
     private void reset() {
         this.firstValue     = this.result;
-        this.operationValue = null;
         this.result         = null;
         this.secondValue    = null;
         this.calculation.setFirstValue(this.firstValue);
