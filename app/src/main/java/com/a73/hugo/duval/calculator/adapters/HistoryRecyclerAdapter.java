@@ -23,6 +23,11 @@ public class HistoryRecyclerAdapter  extends RecyclerView.Adapter<HistoryRecycle
         return vh;
     }
 
+    /**
+     * Holder use History Singleton for changes
+     * @param holder
+     * @param position
+     */
     @Override
     public void onBindViewHolder(@NonNull HistoryRecyclerAdapter.ViewHandler holder, int position) {
         holder.bindItem(HistorySingleton.getInstance().getCalculations().get(position));

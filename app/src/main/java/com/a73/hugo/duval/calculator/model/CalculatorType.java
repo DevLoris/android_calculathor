@@ -3,9 +3,13 @@ package com.a73.hugo.duval.calculator.model;
 import com.a73.hugo.duval.calculator.model.operations.OperationType;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CalculatorType {
+    /**
+     * list of numbers
+     */
     public static final List<String> NUMBERS = new ArrayList<String>(){{
         add("0");
         add("1");
@@ -19,12 +23,10 @@ public class CalculatorType {
         add("9");
     }};
 
-    public static final List<OperationType> OPERATIONS = new ArrayList<OperationType>(){{
-        add(OperationType.OPERATION_ADD);
-        add(OperationType.OPERATION_SUBTRACT);
-        add(OperationType.OPERATION_MULTIPLY);
-        add(OperationType.OPERATION_DIVIDE);
-    }};
+    /*
+    list of operations
+     */
+    public static final List<OperationType> OPERATIONS = Arrays.asList(OperationType.values());
 
     public static final String COMMA = ",";
 

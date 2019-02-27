@@ -27,6 +27,9 @@ public class HistorySingleton {
         this.calculations = calculations;
     }
 
+    /**
+     * Reset list of calculations into history
+     */
     public void resetCalculations() {
         calculations = new ArrayList<>();
     }

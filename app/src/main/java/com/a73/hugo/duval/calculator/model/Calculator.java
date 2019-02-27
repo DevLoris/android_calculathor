@@ -30,7 +30,7 @@ public final class Calculator {
     }
 
     /**
-     *
+     * Get click and define action
      * @param tag String
      */
     public void clickHandler(String tag) {
@@ -63,7 +63,7 @@ public final class Calculator {
     }
 
     /**
-     *
+     * Number click
      * @param number String
      */
     private void clickNumberHandler(String number) {
@@ -93,7 +93,7 @@ public final class Calculator {
     }
 
     /**
-     *
+     * Operation click
      * @param operation String
      */
     private void clickOperationHandler(OperationType operation) {
@@ -107,7 +107,7 @@ public final class Calculator {
     }
 
     /**
-     *
+     * DEL button click
      * @param operation String
      */
     private void clickRemoveHandler(String operation) {
@@ -125,7 +125,7 @@ public final class Calculator {
     }
 
     /**
-     *
+     * CL button click
      * @param operation String
      */
     private void clickClearHandler(String operation) {
@@ -153,14 +153,14 @@ public final class Calculator {
     }
 
     /**
-     *
+     * click on equal button
      */
     private void clickEqualHandler() {
         if (this.calculation.hasSecondValue()) this.processCalculation();
     }
 
     /**
-     *
+     * process the rendering of result
      */
     private void processDisplay() {
         if (this.result != null) {
@@ -196,7 +196,7 @@ public final class Calculator {
     }
 
     /**
-     *
+     * process calculation
      */
     private void processCalculation() {
         this.result = this.calculation.processCalculation();
@@ -218,7 +218,7 @@ public final class Calculator {
     }
 
     /**
-     *
+     * clean values
      */
     private void reset() {
         this.firstValue     = this.result;

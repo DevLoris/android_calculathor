@@ -1,6 +1,8 @@
 package com.a73.hugo.duval.calculator.model.operations;
 
-
+/**
+ * types of operations
+ */
 public enum OperationType {
     OPERATION_ADD,
     OPERATION_SUBTRACT,
