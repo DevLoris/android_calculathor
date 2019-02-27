@@ -10,3 +10,8 @@ Open the app
 
 Enjoy, you can do quick maths ! 
 
+## Functionnalities
+
+- Do quick maths with calculator 
+- Work also with decimals 
+- View your latest calculations in the history
